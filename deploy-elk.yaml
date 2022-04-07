@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: elk
+  name: elk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elk
+  template:
+    metadata:
+      labels:
+        app: elk
+    spec:
+      containers:
+      - image: sebp/elk:latest
+        name: elk
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9200
+          name: http-elastic
+        - containerPort: 5601
+          name: http-kibana
+        - containerPort: 5144
+          name: http-logstash
+        volumeMounts:
+          - name: logstash-pipeline-waf
+            mountPath: /etc/logstash/conf.d/waf.conf
+            subPath: pipeline
+          - name: logstash-pipeline-botdefense
+            mountPath: /etc/logstash/conf.d/botdefense.conf
+            subPath: pipeline
+      volumes:
+      - name: logstash-pipeline-waf
+        configMap:
+          name: logstash-pipeline-waf
+      - name: logstash-pipeline-botdefense
+        configMap:
+          name: logstash-pipeline-botdefense
