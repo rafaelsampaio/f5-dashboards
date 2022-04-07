@@ -12,121 +12,87 @@ data:
         }
       }
     }
+
     filter {
       grok {
         match => {
           "message" => [
-            ",attack_type=\"%{DATA:attack_type}\"",
-            ",blocking_exception_reason=\"%{DATA:blocking_exception_reason}\"",
-            ",bot_anomalies=\"%{DATA:bot_anomalies}\"",
-            ",bot_category=\"%{DATA:bot_category}\"",
-            ",bot_signature_name=\"%{DATA:bot_signature_name}\"",
-            ",client_application=\"%{DATA:client_application}\"",
-            ",client_application_version=\"%{DATA:client_application_version}\"",
-            ",client_class=\"%{DATA:client_class}\"",
-            ",date_time=\"%{DATA:date_time}\"",
+            ",client_ip=\"%{DATA:client_ip}\"",
+            ",client_ip_geo_location=\"%{DATA:client_ip_geo_location}\"",
+            ",client_port=\"%{DATA:client_port}\"",
+            ",client_request_uri=\"%{DATA:client_request_uri}\"",
+            ",configuration_date_time=\"%{DATA:configuration_date_time}\"",
+            ",context_name=\"%{DATA:context_name}\"",
+            ",context_type=\"%{DATA:context_type}\"",
+            ",dest_ip=\"%{DATA:dest_ip}\"",
             ",dest_port=\"%{DATA:dest_port}\"",
-            ",enforced_bot_anomalies=\"%{DATA:enforced_bot_anomalies}\"",
-            ",grpc_method=\"%{DATA:grpc_method}\"",
-            ",grpc_service=\"%{DATA:grpc_service}\"",
-            ",ip_client=\"%{DATA:ip_client}\"",
-            ",is_truncated=\"%{DATA:is_truncated}\"",
-            ",method=\"%{DATA:method}\"",
-            ",outcome=\"%{DATA:outcome}\"",
-            ",outcome_reason=\"%{DATA:outcome_reason}\"",
-            ",policy_name=\"%{DATA:policy_name}\"",
-            ",protocol=\"%{DATA:protocol}\"",
-            ",request_status=\"%{DATA:request_status}\"",
-            ",request=\"%{DATA:request}\"",
-            ",request_body_base64=\"%{DATA:request_body_base64}\"",
-            ",response_code=\"%{DATA:response_code}\"",
-            ",severity=\"%{DATA:severity}\"",
-            ",sig_cves=\"%{DATA:sig_cves}\"",
-            ",sig_ids=\"%{DATA:sig_ids}\"",
-            ",sig_names=\"%{DATA:sig_names}\"",
-            ",sig_set_names=\"%{DATA:sig_set_names}\"",
-            ",src_port=\"%{DATA:src_port}\"",
-            ",staged_sig_cves=\"%{DATA:staged_sig_cves}\"",
-            ",staged_sig_ids=\"%{DATA:staged_sig_ids}\"",
-            ",staged_sig_names=\"%{DATA:staged_sig_names}\"",
-            ",staged_threat_campaign_names=\"%{DATA:staged_threat_campaign_names}\"",
-            ",sub_violations=\"%{DATA:sub_violations}\"",
+            ",device_product=\"%{DATA:device_product}\"",
+            ",device_vendor=\"%{DATA:device_vendor}\"",
+            ",device_version=\"%{DATA:device_version}\"",
+            ",errdefs_msgno=\"%{DATA:errdefs_msgno}\"",
+            ",http_method=\"%{DATA:http_method}\"",
+            ",http_protocol_indication=\"%{DATA:http_protocol_indication}\"",
+            ",route_domain=\"%{DATA:route_domain}\"",
+            ",timestamp=\"%{DATA:timestamp}\"",
+            ",virtual_server_namevirtual_server_name}\"",
+            ",device_id=\"%{DATA:device_id}\"",
+            ",request_date_time=\"%{DATA:request_date_time}\"",
+            ",profile_name=\"%{DATA:profile_name}\"",
             ",support_id=\"%{DATA:support_id}\"",
-            ",threat_campaign_names=\"%{DATA:threat_campaign_names}\"",
-            ",unit_hostname=\"%{DATA:unit_hostname}\"",
-            ",uri=\"%{DATA:uri}\"",
-            ",violations=\"%{DATA:violations}\"",
-            ",violation_details=\"%{DATA:violation_details_xml}\"",
-            ",violation_rating=\"%{DATA:violation_rating}\"",
-            ",vs_name=\"%{DATA:vs_name}\"",
-            ",x_forwarded_for_header_value=\"%{DATA:x_forwarded_for_header_value}\""
+            ",request_status=\"%{DATA:request_status}\"",
+            ",action=\"%{DATA:action}\"",
+            ",reason=\"%{DATA:reason}\"",
+            ",previous_action=\"%{DATA:previous_action}\"",
+            ",previous_support_id=\"%{DATA:previous_support_id}\"",
+            ",previous_request_date_time=\"%{DATA:previous_request_date_time}\"",
+            ",bot_signature=\"%{DATA:bot_signature}\"",
+            ",bot_signature_category=\"%{DATA:bot_signature_category}\"",
+            ",bot_name=\"%{DATA:bot_name}\"",
+            ",session_id=\"%{DATA:session_id}\"",
+            ",class=\"%{DATA:class}\"",
+            ",anomaly_categories=\"%{DATA:anomaly_categories}\"",
+            ",anomalies=\"%{DATA:anomalies}\"",
+            ",additional_bot_signatures=\"%{DATA:additional_bot_signatures}\"",
+            ",micro_service_name=\"%{DATA:micro_service_name}\"",
+            ",micro_service_type=\"%{DATA:micro_service_type}\"",
+            ",micro_service_matched_wildcard_url=\"%{DATA:micro_service_matched_wildcard_url}\"",
+            ",configured_mitigation_action=\"%{DATA:configured_mitigation_action}\"",
+            ",configured_mitigation_action_reason=\"%{DATA:configured_mitigation_action_reason}\"",
+            ",actual_mitigation_action=\"%{DATA:actual_mitigation_action}\"",
+            ",actual_mitigation_action_reason=\"%{DATA:actual_mitigation_action_reason}\"",
+            ",browser_configured_verification_action=\"%{DATA:browser_configured_verification_action}\"",
+            ",browser_actual_verification_action=\"%{DATA:browser_actual_verification_action}\"",
+            ",browser_actual_verification_action_reason=\"%{DATA:browser_actual_verification_action_reason}\"",
+            ",captcha_status=\"%{DATA:captcha_status}\"",
+            ",browser_verification_status=\"%{DATA:browser_verification_status}\"",
+            ",device_id_status=\"%{DATA:device_id_status}\"",
+            ",device_id_action=\"%{DATA:device_id_action}\"",
+            ",previous_initiated_action=\"%{DATA:previous_initiated_action}\"",
+            ",previous_initiated_action_status=\"%{DATA:previous_initiated_action_status}\"",
+            ",classification_reason=\"%{DATA:classification_reason}\"",
+            ",client_type=\"%{DATA:client_type}\"",
+            ",application_display_name=\"%{DATA:application_display_name}\"",
+            ",application_version=\"%{DATA:application_version}\"",
+            ",mobile_in_emulation_mode=\"%{DATA:mobile_in_emulation_mode}\"",
+            ",os_name=\"%{DATA:os_name}\"",
+            ",jailbroken_or_rooted_device=\"%{DATA:jailbroken_or_rooted_device}\"",
+            ",imei=\"%{DATA:imei}\"",
+            ",human_behaviour=\"%{DATA:human_behaviour}\"",
+            ",http_request=\"%{DATA:http_request}\""            
           ]
         }
         break_on_match => false
       }
-      if [violation_details_xml] != "N/A" {
-        xml {
-          source => "violation_details_xml"
-          target => "violation_details"
-        }
-      }
       mutate {
-        split => { "attack_type" => "," }
-        split => { "sig_cves" => "," }
-        split => { "sig_ids" => "," }
-        split => { "sig_names" => "," }
-        split => { "sig_set_names" => "," }
-        split => { "staged_sig_cves" => "," }
-        split => { "staged_sig_ids" => "," }
-        split => { "staged_sig_names" => "," }
-        split => { "staged_threat_campaign_names" => "," }
-        split => { "sub_violations" => "," }
-        split => { "threat_campaign_names" => "," }
-        split => { "violations" => "," }
         remove_field => [
-          "[violation_details][violation_masks]",
-          "violation_details_xml",
           "message"
         ]
       }
-      if [x_forwarded_for_header_value] != "N/A" {
-        mutate { add_field => { "source_host" => "%{x_forwarded_for_header_value}"}}
-      } else {
-        mutate { add_field => { "source_host" => "%{ip_client}"}}
-      }
       geoip {
-        source => "source_host"
+        source => "client_ip"
       }
-      ruby {
-          code => "
-              require 'base64';
-              data = event.get('[violation_details]');
-              def check64(value)
-                value.is_a?(String) && Base64.strict_encode64(Base64.decode64(value)) == value;
-              end
-              def iterate(key, i, event)
-                if i.is_a?(Hash)
-                  i.each do |k, v|
-                    if v.is_a?(Hash) || v.is_a?(Array)
-                      newkey = key + '[' + k + ']';
-                      iterate(newkey, v, event)
-                    end
-                  end
-                else if i.is_a?(Array)
-                  i.each do |v|
-                        iterate(key, v, event)
-                  end
-                else
-                  if check64(i)
-                    event.set(key, Base64.decode64(i))
-                  end
-                end
-              end
-              end
-              iterate('[violation_details_b64decoded]', data, event)
-          "
-        }
     }
+
     output {
       elasticsearch {
         hosts => ["localhost:9200"]
