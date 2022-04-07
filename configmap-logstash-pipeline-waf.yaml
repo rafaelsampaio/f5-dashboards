@@ -96,6 +96,7 @@ data:
       }
       geoip {
         source => "source_host"
+        target => "geoip"
       }
       ruby {
           code => "
